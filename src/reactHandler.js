@@ -287,6 +287,7 @@ exports.getReact = (subject, component, reactOpts = {}) => {
  * get all props or specific props from react node
  * @param {*} subject
  * @param {*} propName
+ * @param suppressLog
  */
 exports.getProps = (subject, propName, suppressLog = false) => {
   const reactNode = getReactNode(subject);
@@ -309,6 +310,7 @@ exports.getProps = (subject, propName, suppressLog = false) => {
 /**
  * get all props or specific props from react node
  * @param {*} subject
+ * @param suppressLog
  */
 exports.getCurrentState = (subject, suppressLog = false) => {
   const reactNode = getReactNode(subject);

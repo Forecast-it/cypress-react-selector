@@ -79,20 +79,21 @@ declare namespace Cypress {
      * This method should always be used with getReact() method
      * @param propName
      *
+     * @param suppressLog
      * @example
      * cy.getReact('MyForm',{name:'email'}).getProps('value').should('eq','john.doe@cypress.com')
      *
      * to get all props
      * cy.getReact('MyForm',{name:'email'}).getProps()
      */
-    getProps(propName?: string): Chainable<any>;
+    getProps(propName?: string, suppressLog?: boolean): Chainable<any>;
 
     /**
      * Get current state from React Node.
      *  @note
      * This method should always be used with getReact() method
      */
-    getCurrentState(): Chainable<any>;
+    getCurrentState(suppressLog?: boolean): Chainable<any>;
 
     /**
      * Get the nthNode using index
