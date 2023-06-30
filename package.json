@@ -1,5 +1,5 @@
 {
-  "name": "cypress-react-selector",
+  "name": "@forecast-it/cypress-react-selector",
   "version": "3.0.0",
   "description": "cypress plugin to locate react elements by component, props and state",
   "main": "./index.js",
