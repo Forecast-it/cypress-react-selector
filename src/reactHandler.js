@@ -288,16 +288,18 @@ exports.getReact = (subject, component, reactOpts = {}) => {
  * @param {*} subject
  * @param {*} propName
  */
-exports.getProps = (subject, propName) => {
+exports.getProps = (subject, propName, suppressLog = false) => {
   const reactNode = getReactNode(subject);
   cy.log(`Finding value for prop **${propName || 'all props'}**`);
-  cy.log(
-    `Prop value found **${
-      propName
-        ? safeStringify(getJsonValue(reactNode.props, propName))
-        : safeStringify(reactNode.props)
-    }**`
-  );
+  if(!suppressLog){
+    cy.log(
+      `Prop value found **${
+        propName
+          ? safeStringify(getJsonValue(reactNode.props, propName))
+          : safeStringify(reactNode.props)
+      }**`
+    );
+  }
   const propValue = propName
     ? cy.wrap(getJsonValue(reactNode.props, propName))
     : cy.wrap(reactNode.props);
@@ -308,16 +310,18 @@ exports.getProps = (subject, propName) => {
  * get all props or specific props from react node
  * @param {*} subject
  */
-exports.getCurrentState = (subject) => {
+exports.getCurrentState = (subject, suppressLog = false) => {
   const reactNode = getReactNode(subject);
   cy.log(`Finding current state of the React component`);
-  cy.log(
-    `Current state found **${
-      getType(reactNode.state) === 'object'
-        ? safeStringify(reactNode.state)
-        : reactNode.state
-    }**`
-  );
+  if(!suppressLog){
+    cy.log(
+      `Current state found **${
+        getType(reactNode.state) === 'object'
+          ? safeStringify(reactNode.state)
+          : reactNode.state
+      }**`
+    );
+  }
   return cy.wrap(reactNode.state);
 };
 
